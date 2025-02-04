@@ -19,7 +19,7 @@ GPTHF consists of:
 - A **sentence-level transformer body** (`slt_body`) that contextualizes sentence embeddings.
 - A **fast generation algorithm** that caches and reuses sentence embeddings to improve efficiency.
 
-![GPTHF Architecture](figures/architecture.png)
+![GPTHF Architecture](figures/gpthf_inference.png)
 
 More details can be found in the paper (link provided once the review process is complete).
 
