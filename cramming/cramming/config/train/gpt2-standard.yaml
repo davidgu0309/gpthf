@@ -1,0 +1,42 @@
+# Version 4 of changes to bert training hyperparameters
+# Optimizes MLM rate for torch.compile, includes improved weight decay limitation, finally updated to a relative bs ramp
+
+name: gpt2-standard
+
+defaults:
+  - optim: adam
+  - optim_mod: disabled
+
+optim:
+  lr: 6e-4
+  weight_decay: 0.1
+
+limited_decay_keys: [] # no weight decay for these layers
+
+# Steps:
+warmup_steps: 10000
+cooldown_steps: 0
+steps: 320000 # these are microbatch steps. This is an upper limit that is usually never reached.
+scheduler: linear
+
+# Training settings:
+batch_size: 1024
+batch_size_ramp: 0.05 # in percentage points, i.e. training reaches the target 8192 at 60% of the total budget.
+
+gradient_clipping: 1.0
+pretrain_in_train_mode: True # default BERT trains with dropout layers enabled in pretrain
+
+max_seq_length: 1024
+
+objective:
+  name: causal-lm
+  mlm_probability: 0.15 # leads to mbs * seq_length * prob = 4096 masked entries, for mbs=128, seq=128
+
+  use_80_20_rule: True
+  disable_mlm: False
+  token_drop: 0.0
+reverse_dataset_order: False
+
+num_epochs: 
+
+budget: ${budget}

@@ -1,0 +1,12 @@
+name: thf
+defaults:
+  - sources:
+      - thf
+streaming: True
+
+vocab_size: 30522 # cannot be changed!
+seq_length: 128 # cannot be changed!
+max_sents_constraint: 128
+
+debug: False
+mode: fineweb

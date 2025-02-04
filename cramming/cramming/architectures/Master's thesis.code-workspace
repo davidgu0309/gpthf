@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"name": "Master's thesis",
+			"path": "../../.."
+		}
+	],
+	"settings": {
+		"python.analysis.typeCheckingMode": "basic",
+		"python.analysis.autoImportCompletions": true
+	}
+}

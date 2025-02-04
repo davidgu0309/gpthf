@@ -1,0 +1,8 @@
+transformers
+tqdm
+datasets
+nltk
+pathlib
+wandb
+scipy
+apache_beam

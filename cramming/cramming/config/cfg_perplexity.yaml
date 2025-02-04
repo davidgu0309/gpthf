@@ -1,0 +1,34 @@
+# Configuration defaults
+# Settings are separated into hyperparameters for architecture, data, implementation and train/eval hyperparams
+defaults:
+  - impl: torch-default
+  - wandb: default
+  - eval: GLUE_sane
+  - data: thf
+  - _self_
+  - override hydra/job_logging: custom
+
+wandb:
+  project: cramming-perplexity
+
+base_dir: outputs
+job_id: # automatically filled
+hydra:
+  sweep:
+    dir: ${base_dir}/${name}/downstream/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  run:
+    dir: ${base_dir}/${name}/downstream/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  job:
+    chdir: True
+
+baseline_model: 
+hypothesis_model: 
+
+seed: # Optional: Set initial seed
+
+# A name for this run [will draw the checkpoint from runs with this name
+# and use this name for the summary table and outputs folder]
+name: default
+
+# debug implementation by running every loop just once:
+dryrun: False

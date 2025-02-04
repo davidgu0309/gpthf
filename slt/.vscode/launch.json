@@ -1,0 +1,71 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "sae",
+			"type": "python",
+			"request": "launch",
+			"module": "slt",
+			"args": [
+				"--input-path=./patcher_data",
+				"--output-path=./slt_models",
+				"--action=train-sae",
+				"--max-length=512",
+				"--checkpoint-frequency=1000",
+			],
+			"cwd": "${workspaceFolder}\\..",
+			"justMyCode": true
+		},
+		{
+			"name": "thf",
+			"type": "python",
+			"request": "launch",
+			"module": "slt",
+			"args": [
+				"--input-path=./patcher_data",
+				"--output-path=./slt_models",
+				"--action=train-thf",
+				"--max-length=1024",
+				"--checkpoint-frequency=1000",
+			],
+			"cwd": "${workspaceFolder}\\..",
+			"justMyCode": true
+		},
+		{
+			"name": "build-race-embeddings",
+			"type": "python",
+			"request": "launch",
+			"module": "slt",
+			"args": [
+				"--input-path=./patcher_data",
+				"--output-path=./slt_models",
+				"--action=build-embeddings-race",
+				"--model-name=sae-614779-74200016.pt",
+				"--checkpoint-frequency=1000",
+			],
+			"cwd": "${workspaceFolder}\\..",
+			"justMyCode": true
+		},
+		{
+			"name": "train-slt-race",
+			"type": "python",
+			"request": "launch",
+			"module": "slt",
+			"args": [
+				"--input-path=./patcher_data",
+				"--output-path=./slt_models",
+				"--action=train-slt-race",
+				"--model-name=sae-614777-9900016.pt",
+				"--lr=5e-5",
+				"--epochs=5",
+				"--batch-size=16",
+				"--checkpoint-frequency=10000",
+			],
+			"cwd": "${workspaceFolder}\\..",
+			"justMyCode": true
+		}
+	]
+}

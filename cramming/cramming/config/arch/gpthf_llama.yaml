@@ -1,0 +1,39 @@
+# Instantiates a (non-huggingface) scriptable encoder-based LM with BERT as baseline
+# Modernized version of bert-c5
+
+# These are the huggingface bert parameters
+architectures:
+  - GPTHF_Llama
+
+wlt_encoder_num_hidden_layers: 8
+slt_body_num_hidden_layers: 4
+wlt_decoder_num_hidden_layers: 0
+
+wlt_embedding_width: 1
+wlt_embedding_multiplier: 1
+hidden_size: 768
+intermediate_size: 3072
+
+max_position_embeddings: 512
+
+num_attention_heads: 12
+num_key_value_heads: 12
+
+num_hidden_layers: 12
+
+init_type: normal
+init_std: 0.02
+
+bos_token_id: 50256
+eos_token_id: 50256
+
+classification_head:
+  pooler: last_index
+  include_ff_layer: True
+  head_dim: 1024
+  nonlin: Tanh
+  classifier_dropout: 0
+  
+mode: fast
+encoder_mode: block
+final_norm: True

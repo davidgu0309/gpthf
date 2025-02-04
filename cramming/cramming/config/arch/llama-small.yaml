@@ -1,0 +1,7 @@
+# Instantiates a (non-huggingface) scriptable encoder-based LM with BERT as baseline
+# Modernized version of bert-c5
+
+# These are the huggingface bert parameters
+architectures:
+  - Llama-small
+

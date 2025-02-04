@@ -1,0 +1,10 @@
+# The bookcorpus dataset, drawn from it huggingface mirror
+thf:
+  provider: thf
+  split: train
+
+  streaming: False
+
+  # source-specific cleaning rules?
+  remove_columns:
+  #concatenate_successive_entries: 16

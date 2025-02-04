@@ -1,0 +1,12 @@
+name: gpthf
+defaults:
+  - sources:
+      - thf
+streaming: True
+
+vocab_size: 50260 # cannot be changed!
+seq_length: 512 # cannot be changed!
+max_sents_constraint: 128
+
+debug: False
+mode: c4

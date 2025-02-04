@@ -1,0 +1,38 @@
+# Configuration defaults
+# Settings are separated into hyperparameters for architecture, data, implementation and train/eval hyperparams
+defaults:
+  - arch: gpthf_llama
+  - impl: torch-default
+  - train: bert-base
+  - eval: GLUE_sane
+  - wandb: default
+  - data: thf
+  - _self_
+  - override hydra/job_logging: custom
+
+wandb:
+  project: cramming-generate
+
+base_dir: outputs
+job_id: # automatically filled
+hydra:
+  sweep:
+    dir: ${base_dir}/${name}/generate/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  run:
+    dir: ${base_dir}/${name}/generate/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  job:
+    chdir: True
+
+name: default
+seed: # Optional: Set initial seed
+dryrun: False
+
+max_new_tokens: 100
+temperature: 1.0
+do_sample: False
+top_k: 20
+
+batch_size: 1
+dataset: openwebtext
+
+# debug implementation by running every loop just once:

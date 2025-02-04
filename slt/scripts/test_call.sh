@@ -1,0 +1,1 @@
+sbatch --mem=30G --gres=gpu:1 --time=00-01:00:00 --exclude=artongpu01,tikgpu01,tikgpu02,tikgpu03,tikgpu04,tikgpu05,tikgpu08 --cpus-per-task=2 --output=/home/pbelcak/slt/log/%j.out --error=/home/pbelcak/slt/log/%j.err slt.sh --action=test-sae  --source-file=wikipedia-and-bco-sentences-623833-split --batch-size=16 --gradient-accumulation-steps=8 --max-length=128 $@
